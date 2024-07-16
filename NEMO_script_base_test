@@ -1,4 +1,4 @@
-## NEMO age CONFIG FILE ##
+## NEMO age ini file ##
 ## TESTING
 
 ## file examples https://bitbucket.org/ecoevo/nemo-age-release/src/master/examples/param/ 
@@ -15,6 +15,8 @@ replicates 	1				## taking the source population from different simulations if >
 generations 	50 				
 
 source_pop 	 Allenwiller_FSTAT_F0_extended.txt		## file with adults only from where the simulation is starting
+								## NB: check the N of loci is interpreted correctly!!!
+
 source_file_type .txt 				## FSTAT format
 source_preserve  			      	## keeping the individuals from the imported population (adults) ?
 source_fill_stage adults 			# no age information is provided in the FSTAT file, it's safer to just load every one in the adult age class [FG] 
