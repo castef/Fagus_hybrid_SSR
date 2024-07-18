@@ -1,8 +1,8 @@
-## NEMO age ini file ##
-## TESTING
+## NEMO age CONFIG FILE ##
 
-## file examples https://bitbucket.org/ecoevo/nemo-age-release/src/master/examples/param/ 
-## NB: need the `&` in front of the file name
+## TESTING PARAMETERS
+
+# low resolution grid: 8m x 8m
 
 ## SIMULATION ##
 run_mode 	overwrite
@@ -12,19 +12,19 @@ filename 	Allenwiller_FSTAT_results	## output file name of simulation
 logfile		nemo.log
 
 replicates 	1				## taking the source population from different simulations if >1
-generations 	50 				
+generations 	30 				
 
-source_pop 	 Allenwiller_FSTAT_F0_extended.txt		## file with adults only from where the simulation is starting
-								## NB: check the N of loci is interpreted correctly!!!
-
+source_pop 	 Allenwiller_FSTAT_F0_extended.txt		## file with adults only!!!! 
 source_file_type .txt 				## FSTAT format
 source_preserve  			      	## keeping the individuals from the imported population (adults) ?
 source_fill_stage adults 			# no age information is provided in the FSTAT file, it's safer to just load every one in the adult age class [FG] 
 						# 32 is wrong, not working! set the stage to lead from the source population - only the last age class/stage number 5 (1000 = 32 in binary, least important bit is to the right, bits correspond to stages in reverse order)
 
 ## POPULATION ##
-patch_number	6351  				## n of patches for a grid 4 x 4 meters (6004 cells = 0 trees, 333 cells = 1, 14 cells 2 trees)
-patch_nbfem	&NEMO_patch_capacity.txt	## Carrying capacity of each patch (K), this is the number of females / patch (ermaphrodites)
+patch_number	1628  				## n of patches for a grid 8 x 8 meters 
+patch_nbfem	&NEMO_patch_capacity.txt	## Carrying capacity of each patch (K):
+# ? values/patch corresponding to the "real world" seedling density recorded in the forest! makes sense?
+
 patch_nbmal	0
 
 ### AGE STRUCTURE and TRANSITION MATRIX ###
@@ -52,12 +52,22 @@ save_stats      4  # census
 aging_multi     5  # stage transition (after disperse, to save data for both adults and offspring)
 save_files      6  # write summary stats to file
 
-# DISPERSAL
-dispersal_model 1
-dispersal_rate 0.02
-#dispersal_connectivity_matrix	&NEMO_seed_connectivity_matrix.txt       ## matrix where each row has all the patches ID connected to a focal patch (1 row / patch)
-#dispersal_reduced_matrix	 &NEMO_seed_rate_matrix.txt               ## P to leave the natal patch - size of connectivity matrix, contains only the patches values where seeds can fall (skip patches with 0)
+### ? is this order correct if I want to save the demographic information/patch for both offspring and adults? 
 
+# DISPERSAL
+#dispersal_matrix	&NEMO_seed_dispersal_matrix.txt
+
+# ***ERROR*** the size of the female dispersal matrix is not equal to patch_number X patch_number (2650384[1628,1628] != 40335201)!
+
+# OR
+
+dispersal_model 		1
+dispersal_connectivity_matrix	 &NEMO_seed_connectivity_matrix.txt       ## matrix where each row has all the patches ID connected to a focal patch (1 row / patch)
+dispersal_reduced_matrix	 &NEMO_seed_rate_matrix.txt               ## P to leave the natal patch - size of connectivity matrix, contains only the patches values where seeds can fall (skip patches with 0)
+
+# ***ERROR***  The female connectivity dispersal matrix must have as many rows as the number of patches in the population
+### dim(connectivity and dispersal matrix) = 1628 x 1628 !!!
+### ? how to handle rows with only 0 ?? just empty {} ? # 
 
 ## MATING SYSTEM ##
 mating_system	6		## 6 - rm with selfing (only females used - considered hermaphrodites) NB: requires patch_nbfem and patch_nbmal  
@@ -65,21 +75,22 @@ mating_system	6		## 6 - rm with selfing (only females used - considered hermaphr
 
 ## NEUTRAL MARKERS ##
 ntrl_loci           16
-ntrl_all            238			## max number of alleles/ locus
+ntrl_all            238			## max number of alleles/ locus ----- NB: missing alleles have been set as 001001
 ntrl_mutation_model 0			## check
 ntrl_mutation_rate  0  			## no mutation
 ntrl_save_freq      locus     # per-locus F-stat (calculated on the offsprings only?)
-ntrl_recombination_rate	0.5		# unlinked loci, no genetic map
+ntrl_recombination_rate	0.5		# unlinked loci, no genetic map --?
 
 
 ## REGULATION ##
-regulation_by_competition	2.701104	## competition coefficient
+regulation_by_competition	2.701104	## competition coefficient (eigen value from pop_transition_matrix)
 regulation_by_competition_model  Beverton-Holt 		
 regulation_by_competition_affected_age   1 		## only the seedlings are affected - reproduction start after 40-50 years
 regulation_by_competition_count_age_flag 4294967294	# [FG] (all but age class 0) 
 
 
 ## SAVE STATS ##
-stat demography pedigree fstatWC  		 
+stat pop pop.patch pedigree 	
+ ### ?  recording the number of individuals for each stage (age) per patch for each generation?	 
 stat_log_time	1
-#file_sample_age 7    # does not exist 
+#file_sample_age 7    # does not exist !!!
