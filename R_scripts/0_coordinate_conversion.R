@@ -5,7 +5,7 @@ library(terra)
 
 rm(list=ls())
 
-setwd(dir="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean")
+setwd(dir="~/Data_clean")
 
 ### Waldi 
 # circle plots
