@@ -14,7 +14,7 @@ library("GeoModels")
 require("fields")
 set.seed(89)
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 
 ### Allenwiller ####
 all_data=fread(paste0(path,"Data_clean/Allenwiller_circleplot_info_withcoord.csv"))
