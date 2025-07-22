@@ -1,8 +1,6 @@
 
 # FIGURES
 
-# Molecular Ecology guidelines
-https://authorservices.wiley.com/asset/photos/electronic_artwork_guidelines.pdf
 
 # max size per figure: 10MB
 # dimensions: 80 - 180 mm (7.0866 inches) width
@@ -57,9 +55,9 @@ library(rnaturalearth)
 library(rnaturalearthdata)
 library(patchwork)
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
-#path="C:/Users/Camilla/Dropbox (Old (1))/Dropbox/WSL_PhD/Projects/Hybridization/"
-setwd(dir="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean")
+path="~/Hybridization/"
+
+setwd(dir="~/Data_clean")
 
 # -------- Colour vectors ------
 ColourVector = c( "#ffcc00","#482173FF", "#25858EFF", "#85D54AFF", "orange","#9C99C8",  "gray8")
