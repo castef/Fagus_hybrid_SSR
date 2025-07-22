@@ -749,7 +749,7 @@ ggsave(paste0(path, "Manuscript/Figures/Figure3_phenology.pdf"),  plot = Fig_phe
 # -------- Figure 4 and S4. NMpi2 selection gradients + genealogies ---------
 
 ### panel  selection gradients
-path = "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Parentage analysis/NMpi2/Camilla_data/"
+path = "~/Parentage analysis/NMpi2/Camilla_data/"
 sel_grad = read.xlsx(paste0(path, "/NMpi2_overall_results.xlsx"), sheetName = "Selection gradients")
 
 sel_grad$Site <- gsub("Waldi", "Wäldi", sel_grad$Site)
@@ -835,7 +835,7 @@ one_parent$Mo1_NH <- factor(one_parent$Mo1_NH, levels = c("Pure sylvatica", "Pur
     )
   single_parents
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/FigureS4_NMpi2_single_parents.png"), 
     width =7,height=4, res=600, units = "in")
 plot(single_parents)
@@ -976,7 +976,7 @@ wal_grid
 gc()
 
 ## data prep
-setwd("C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean/")
+setwd("~/Data_clean/")
 grid_adults_2020 <- readRDS("NEMO/HI_data_adults_2020.RDS")
 grid_adults_2120 <- readRDS("NEMO/HI_data_adults_2120.RDS")
 grid_juv_2020 <- readRDS("NEMO/HI_data_juveniles_2020.RDS")
@@ -1174,7 +1174,7 @@ figure_hi_allenwiller_ar30_2 <- plot_grid(
 )
 
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/Figure5a_allenwiller_ar30.png"), 
     width =7, height=7, units = "in", res=600)
 plot(figure_hi_allenwiller_ar30_2)
@@ -1213,7 +1213,7 @@ figure_hi_waldi_ar30_2 <- plot_grid(
 )
 
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/Figure5b_waldi_ar30.png"), 
     width =7, height=7, units = "in", res=600)
 plot(figure_hi_waldi_ar30_2)
@@ -1430,7 +1430,7 @@ moran_plot <- ggplot(subset(combined_df,metric=="Moran's I"), aes(x = scenario_l
 
 moran_plot <- ggarrange(moran_plot, legend_dp, ncol = 2, widths = c(6,1), align = "hv")
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/Figure6_moransI.png"), 
     width =7,height=4, res=600, units = "in")
 plot(moran_plot)
@@ -1516,7 +1516,7 @@ sim_long_filtered %>%
   summarise(mean_HI_prop = mean(mean_prop), .groups = "drop")
 
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/Figure7_boxplots.png"), 
     width =7, height=3, units = "in", res=600)
 plot(boxplot_sim_obs)
@@ -1679,7 +1679,7 @@ ggsave(paste0(path, "Manuscript/Figures/FigureS2_panel_informativescore.pdf"),  
 
 # -------- Figure S3. SSR Panel analysis -----------
 rm(list=ls())
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Projects/Hybridization/"
 
 accuracy_res <- fread(paste0(path, "Data_clean/Hybriddetective/Accuracy_results.csv"))
 efficiency_res <- fread(paste0(path, "Data_clean/Hybriddetective/Efficiency_results.csv"))
@@ -1943,7 +1943,7 @@ Fig_nemodemographic <- ggpubr::ggarrange(
 
 Fig_nemodemographic
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Projects/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/FigureS5_nemodemographic.png"), 
     width =7,height=7, res=600, units = "in")
 plot(Fig_nemodemographic)
@@ -2000,7 +2000,7 @@ figure_hi_allenwiller_ar50_2 <- plot_grid(
 )
 
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/FigureS6a_allenwiller_ar50.png"), 
     width =7, height=7, units = "in", res=600)
 plot(figure_hi_allenwiller_ar50_2)
@@ -2040,7 +2040,7 @@ figure_hi_waldi_ar50_2 <- plot_grid(
 )
 
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/FigureS6b_waldi_ar50.png"), 
     width =7, height=7, units = "in", res=600)
 plot(figure_hi_waldi_ar50_2)
@@ -2232,7 +2232,7 @@ HI_diff_plot <- ggpubr::ggarrange(
   align = "hv")
 HI_diff_plot
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/FigureS8A_HI1_diff.png"), 
     width =7.0866, height=7.0866, units = "in", res=600)
 plot(HI_diff_plot)
@@ -2262,7 +2262,7 @@ HI_diff_plot <- ggpubr::ggarrange(
 
 HI_diff_plot
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/FigureS8B_HI0.5_diff.png"), 
     width =7.0866, height=7.0866, units = "in", res=600)
 plot(HI_diff_plot)
@@ -2436,7 +2436,7 @@ SSE_plot <- ggpubr::ggarrange(
 )  
 SSE_plot
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+
 png(filename=paste0(path, "Manuscript/Figures/FigureS7C_SSE_grid.png"), 
     width =7.0866, height=7.0866, units = "in", res=600)
 plot(SSE_plot)
@@ -2630,7 +2630,6 @@ combined_plot <- ggplot(combined_df, aes(x = scenario_label, y = value)) +
 
 combined_plot <- ggarrange(combined_plot, legend_dp, ncol = 2, widths = c(6,1), align = "hv")
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/FigureS9_NEMO_MI_SSE.png"), 
     width =7,height=5, res=600, units = "in")
 plot(combined_plot)
@@ -2641,7 +2640,7 @@ ggsave(paste0(path, "Manuscript/Figures/FigureS9_NEMO_MI_SSE.pdf"),  plot = comb
 
 
 # -------- Figure X. plot HI best scenarios current future ------
-setwd("C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean/")
+setwd("~/Data_clean/")
 
 # function to process the hybrid index data - proportion per patch (ALL STAGES INCLUDING JUVENILES)
 process_HI_data <- function(sim_HI_files, grid_files, stand_names) {
@@ -2831,7 +2830,6 @@ best_p <- ggarrange(ggarrange(row2,row3, ncol = 1,align = "hv"), legend_HI, ncol
 )
 best_p
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/Figure5_best_scenarios.png"), 
     width =7.0866, height=3, units = "in", res=600)
 plot(best_p)
