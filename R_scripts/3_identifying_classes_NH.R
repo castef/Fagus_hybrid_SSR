@@ -44,8 +44,8 @@ library("genepopedit") ## needed for converting files
 library("parallelnewhybrid")
 library("hybriddetective")
 
-setwd(dir="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean")
-path = "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean"
+setwd(dir="~/Data_clean")
+path = "~/Data_clean"
 
 #----  Waldi dataset preparation ----
 
@@ -142,7 +142,7 @@ genepopedit::genepop_newhybrids(genepop="NewHybrids/Allenwiller_genepop_all.txt"
 #---- running Newhybrids (parallelnewhybrids) on the whole dataset ----
 path.hold <- getwd()
 # set the path of newhybrids
-path.nh <- "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/NewHybrids/packages/newhybrids-master/bin/PC/newhybrids/"
+path.nh <- "~/packages/newhybrids-master/bin/PC/newhybrids/"
 
 
 # Waldi # 
@@ -286,15 +286,15 @@ fig_nh_plot=ggpubr::ggarrange(al_nh_plot, wal_nh_plot,
                               labels = c("Allenwiller", "Waldi"))
 fig_nh_plot
 
-png(filename="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Manuscript/Figures/Nh_plot_last.png", width =19000,height=8000, res=1500)
+png(filename="~/Manuscript/Figures/Nh_plot_last.png", width =19000,height=8000, res=1500)
 plot(fig_nh_plot)
 dev.off()
 
 # save singular plots
-png(filename="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Manuscript/Figures/All_Nh_plot_last.png", width =10000,height=9000, res=1500)
+png(filename="~/Manuscript/Figures/All_Nh_plot_last.png", width =10000,height=9000, res=1500)
 plot(al_nh_plot)
 dev.off()
-png(filename="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Manuscript/Figures/Wal_Nh_plot_last.png", width =10000,height=7000, res=1500)
+png(filename="~/Manuscript/Figures/Wal_Nh_plot_last.png", width =10000,height=7000, res=1500)
 plot(wal_nh_plot)
 dev.off()
 
