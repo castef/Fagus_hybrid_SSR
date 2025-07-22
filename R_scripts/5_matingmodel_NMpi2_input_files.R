@@ -11,7 +11,7 @@ library("ggplot2")
 library("tidyverse")
 library("terra")
 
-setwd(dir="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean")
+setwd(dir="~/Data_clean")
 
 ## each file must contain:
 # generation code (0 = adult, 1, offspring)
