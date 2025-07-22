@@ -1,7 +1,7 @@
 # analysis of SSR panel with hybriddetective #
 
 # installing packages in a directory where you have permissions
-.libPaths("C:/Users/stefanin/R/win-library/4.4")
+.libPaths("~/R/win-library/4.4")
 
 devtools::install_github("bwringe/parallelnewhybrid") #required
 devtools::install_github("kkeenan02/diveRsity", dependencies = TRUE)
@@ -16,9 +16,9 @@ library("genepopedit") ## needed for converting files
 library("parallelnewhybrid")
 library("hybriddetective")
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean"
-setwd(dir="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean")
-path.nh <- "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/NewHybrids/packages/newhybrids-master/bin/PC/newhybrids/"
+path="~/Data_clean"
+setwd(dir="~/Data_clean")
+path.nh <- "~/NewHybrids/packages/newhybrids-master/bin/PC/newhybrids/"
 
 ####  identifying the most informative loci for panel analysis ####
 
@@ -62,7 +62,7 @@ ssr_panel <- ggplot(informative_score, aes(x = reorder(Locus, Score), y = Score)
   theme_minimal()
 ssr_panel
 
-png(filename="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Manuscript/Figures/SSR_panel_informativescore.png", 
+png(filename="~/Figures/SSR_panel_informativescore.png", 
     width =8000,height=8000, res=1500)
 plot(ssr_panel)
 dev.off()
@@ -433,7 +433,7 @@ accuracy_plot <- ggplot(accuracy_res) +
 
 accuracy_plot
 
-path.fig = "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Manuscript/Figures/"
+path.fig = "~/Manuscript/Figures/"
 png(filename= paste0(path.fig, "accuracy_plot.png"), width =10000,height=5000, res=800)
 plot(accuracy_plot)
 dev.off()
@@ -522,7 +522,7 @@ power_plot <- ggplot(power_res) +
 
 power_plot
 
-path.fig = "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Manuscript/Figures/"
+path.fig = "~/Manuscript/Figures/"
 png(filename= paste0(path.fig, "power_plot.png"), width =10000,height=5000, res=800)
 plot(power_plot)
 dev.off()
