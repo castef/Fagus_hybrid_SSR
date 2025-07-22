@@ -19,8 +19,7 @@ library(ggpubr)
 library(gridExtra)
 
 # path to get files
-setwd(dir="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean")
-#setwd(dir="C:/Users/Camilla/Dropbox (Old (1))/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean")
+setwd(dir="~/Data_clean")
 
 ## plotting theme
 theme_p <- theme(
@@ -569,7 +568,7 @@ Figure_seed_sim_HI_grids_2020 <- ggpubr::ggarrange(
   
 Figure_seed_sim_HI_grids_2020
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/Figure_seed_sim_HI_grids_2020.png"), 
     width =7.0866, height=7.0866, units = "in", res=600)
 plot(Figure_seed_sim_HI_grids_2020)
@@ -957,7 +956,7 @@ HI_diff_plot <- ggpubr::ggarrange(
   align = "hv")
 HI_diff_plot
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/Figure_HI1_diff.png"), 
     width =7.0866, height=7.0866, units = "in", res=600)
 plot(HI_diff_plot)
@@ -984,7 +983,6 @@ HI_diff_plot <- ggpubr::ggarrange(
 
 HI_diff_plot
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/Figure_HI0.5_diff.png"), 
     width =7.0866, height=7.0866, units = "in", res=600)
 plot(HI_diff_plot)
@@ -1153,7 +1151,6 @@ SSE_plot <- ggpubr::ggarrange(
 )  
 SSE_plot
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/Figure_SSE_grid.png"), 
     width =7.0866, height=7.0866, units = "in", res=600)
 plot(SSE_plot)
