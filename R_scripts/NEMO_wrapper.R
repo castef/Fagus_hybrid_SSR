@@ -15,7 +15,7 @@
 # 6. create seed and pollen dispersal matrices
 
 # path where to create and store the input files
-input_path = "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/NEMO/Rwrapper_files/"
+input_path = "~/NEMO/Rwrapper_files/"
 setwd(input_path)
 
 # ------- 1. create locus list -----------
@@ -437,7 +437,7 @@ write.matrix.nemo <- function(mat, outfile) {
 # ALLENWILLER #
 
 # loading species classification (from remote sensing, 0 = beech) and project to metric system
-class <- rast("C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data/NDVI_classification/Allen_classification.tif")
+class <- rast("~/Allen_classification.tif")
 class <- project(x=class,y= "epsg:3035")
 plot(class)
 # load simulation grid
