@@ -13,7 +13,7 @@ library(ggspatial)
 library(ape)
 
 # path to get files
-setwd(dir="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean")
+setwd(dir="~/Data_clean")
 
 # --------- Observed Moran's I Calculation ---------
 obs_HI_cp <- fread("NEMO/Observed_HI_circleplots.csv")
@@ -260,7 +260,7 @@ combined_plot <- ggplot(combined_df, aes(x = scenario_label, y = value)) +
 
 combined_plot
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 png(filename=paste0(path, "Manuscript/Figures/FigureS9_NEMO_HI_SSE.png"), width =13000,height=8000, res=1200)
 plot(combined_plot)
 dev.off()
