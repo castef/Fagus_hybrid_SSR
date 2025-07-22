@@ -21,9 +21,8 @@ library(data.table)
 
 
 rm(list=ls())
-#path = "C:/Users/Camilla/Dropbox (Old (1))/Dropbox/WSL_PhD/Projects/Hybridization/Phenology/"
-setwd(dir="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean/Phenology/")
-path = "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean/Phenology/"
+setwd(dir="~/Data_clean/Phenology/")
+path = "~/Data_clean/Phenology/"
 
 # custom colors for subspecies
 mycols <- c("orientalis" = "#482173FF", "sylvatica" = "#ffcc00", "hybrid" = "#25858EFF")
@@ -163,7 +162,7 @@ fwrite(cleaned_data, "Spring_phenology_all_sites_cleaned.csv")
 
 ######## getting T data from ERA5 and calculating GDD and CD #########
 #loading data from Waldi
-json_file <-"C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Phenology/T_data/era5_waldi_2.json"
+json_file <-"~/Phenology/T_data/era5_waldi_2.json"
 temp_data_station <- fromJSON(json_file, flatten=TRUE)
 temp_matrix=as.data.frame(temp_data_station$hourly$temperature_2m)
 names(temp_matrix)="value"
@@ -176,7 +175,7 @@ res_final$site= "Waldi"
 res_final_w = res_final
 
 #loading data from Allenwiller
-json_file <-"C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Phenology/T_data/era5_allenwiller_2.json"
+json_file <-"~/Phenology/T_data/era5_allenwiller_2.json"
 temp_data_station <- fromJSON(json_file, flatten=TRUE)
 temp_matrix=as.data.frame(temp_data_station$hourly$temperature_2m)
 names(temp_matrix)="value"
@@ -189,7 +188,7 @@ res_final$site= "Allenwiller"
 res_final_a = res_final
 
 #loading data from Leiselheim
-json_file <- "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Phenology/T_data/era5_leiselheim_2.json"
+json_file <- "~/Phenology/T_data/era5_leiselheim_2.json"
 temp_data_station <- fromJSON(json_file, flatten=TRUE)
 temp_matrix=as.data.frame(temp_data_station$hourly$temperature_2m)
 names(temp_matrix)="value"
@@ -264,7 +263,7 @@ GDD_CD_sites = ggplot(subset(t_dat,site =="Waldi"), aes(x=date2 )) +
   facet_wrap(~site, ncol = 1)
 GDD_CD_sites
 
-png(filename ="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Phenology/GDD_CD_sites.png", width = 1500, height = 1000, res =200)
+png(filename ="~/Phenology/GDD_CD_sites.png", width = 1500, height = 1000, res =200)
 plot(GDD_CD_sites)
 dev.off()
 
