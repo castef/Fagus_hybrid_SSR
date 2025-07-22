@@ -16,10 +16,10 @@ library(xlsx)
 rm(list=ls())
 
 # path where to move results for storage and analysis
-store_path = "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/NEMO/NEMO_output"
+store_path = "~/NEMO/NEMO_output"
 
 # path to get other files
-setwd(dir="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean")
+setwd(dir="~/Data_clean")
 
 # WALDI #
 
@@ -406,7 +406,7 @@ FigS3 <- ggpubr::ggarrange(
 
 FigS3
 
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/"
+path="~/Hybridization/"
 
 png(filename=paste0(path, "Manuscript/Figures/FigureS2_panel.png"), width =12000,height=10000, res=900)
 plot(FigS3)
@@ -524,7 +524,6 @@ al_best_param
 end_sim_obs2=merge(end_sim_obs2,tab_for_loop,by=c("b","s1","k","a", "stand"))
 head(end_sim_obs2[order(end_sim_obs2$chi_scaled,decreasing=FALSE),])
 
-setwd(dir="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean")
 
 fwrite(end_sim_obs2, "NEMO/NEMO_demographic_param_test.csv")
 
