@@ -14,26 +14,26 @@ library(data.table)
 rm(list=ls())
 
 # change paths as needed
-setwd("C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean/")
+setwd("~/Data_clean/")
 #setwd("C:/Users/Camilla/Dropbox (Old (1))/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean/")
 
 # path to get previous infos
-path="C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean/"
+path="~/Data_clean/"
 
 # path where to create and store the input files
-input_path = "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/NEMO/Input_files/"
+input_path = "~/NEMO/Input_files/"
 
 # path to run the simulation (where to move the final input files)
-exe_path = "//wsl.localhost/Ubuntu/home/camilla/nemoage0.32.6/exe/"
+exe_path = "~/nemoage0.32.6/exe/"
 
 ####  sampling scheme #####
 
 # WALDI #
 
-wal_sam <- vect("C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data/QGISMaps/Waldi_layers/waldi_sampling_points.shp")
+wal_sam <- vect("~/waldi_sampling_points.shp")
 wal_sam=wal_sam[!is.na(geom(wal_sam)[,"x"]),] #remove a point without coordinates
 # file of adults and circle plots coordinates
-trees= fread("C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data/Coordinates_converted/Waldi_converted/Waldi_ACp_Coordinates_21781.csv")
+trees= fread("~/Waldi_ACp_Coordinates_21781.csv")
 # convert to SpatVector 
 trees_v <- vect(trees, geom = c("X", "Y"), crs = crs(wal_sam))
 
@@ -58,10 +58,10 @@ writeVector(wal_sam_buffer, "Waldi_sampling_scheme.shp", overwrite = T)
 # ALLENWILLER #
 
 # read shapefile with circleplots
-al_sam <- vect("C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data/QGISMaps/Allenwiller_layers/Allenwiller_sampling_points.shp")
+al_sam <- vect("~/Allenwiller_sampling_points.shp")
 al_sam=al_sam[!is.na(geom(al_sam)[,"x"]),] #remove a point without coordinates
 # file of adults and circle plots coordinates
-trees1= read.xlsx("C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data/Coordinates_converted/Allenwiller_converted/Allenwiller_ACp_Coordinates_UTM32N_32632.xlsx", sheetIndex = 1)
+trees1= read.xlsx("~/Allenwiller_ACp_Coordinates_UTM32N_32632.xlsx", sheetIndex = 1)
 # convert to SpatVector 
 trees1_v <- vect(trees1, geom = c("Easting", "Northing"), crs = crs("EPSG:32632"))
 plot(trees1_v)
@@ -860,7 +860,7 @@ write.matrix.nemo <- function(mat, outfile) {
 # ALLENWILLER #
 
 # loading species classification (from remote sensing, 0 = beech) and project to metric system
-class <- rast("C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data/NDVI_classification/Allen_classification.tif")
+class <- rast("~/Allen_classification.tif")
 class <- project(x=class,y= "epsg:3035")
 plot(class)
 # load simulation grid
@@ -911,7 +911,7 @@ plot(grid, col = grid$car_cap)
 
 # WALDI #
 # importing NIR data for Waldi (fro remote sensing data) to set carrying cap only in the stand
-ndvi_0317 = rast("C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization//Data/NDVI_classification/Waldi_2017_2019/Waldi_2017/PSScene/20170316_093506_0e1f_3B_AnalyticMS_SR_clip.tif")
+ndvi_0317 = rast("~//Data/NDVI_classification/Waldi_2017_2019/Waldi_2017/PSScene/20170316_093506_0e1f_3B_AnalyticMS_SR_clip.tif")
 ndvi_0317 <- project(x=ndvi_0317,y= "epsg:3035")
 plot(ndvi_0317$nir)
 
@@ -1548,17 +1548,3 @@ write.red.dispersal.matrix(connectivity_matrix, rate_matrix,paste0(input_path, "
 file.copy(from =  paste0(input_path, "NEMO_seed_connectivity_matrix_a_flat.txt"), to = paste0(input_path, "NEMO_pollen_connectivity_matrix_a_flat.txt")) 
 file.copy(from =paste0(input_path, "NEMO_seed_rate_matrix_a_flat.txt"),  to =paste0(input_path, "NEMO_pollen_rate_matrix_a_flat.txt"))
 
-#### move all the files from the input_path storage to the exe_path ####
-from_folder <- "C:/Users/stefanin/Dropbox/WSL_PhD/Projects/Hybridization/Data_clean/NEMO"
-# or
-from_folder <- input_path
-
-to_folder <- input_path
-# or
-to_folder <- exe_path
-
-# Get list of all files in source folder
-files <- list.files(from_folder, full.names = TRUE)
-
-# copy all the files
-file.copy(files, to_folder)  
